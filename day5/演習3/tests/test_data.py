@@ -75,6 +75,10 @@ def test_missing_values_acceptable(sample_data):
             missing_rate < 0.8
         ), f"カラム '{col}' の欠損率が80%を超えています: {missing_rate:.2%}"
 
+def test_survived_is_binary(sample_data):
+    """Survived カラムが 0 or 1 のみを含むか確認"""
+    assert set(sample_data["Survived"].unique()).issubset({0, 1})
+
 
 def test_value_ranges(sample_data):
     """値の範囲を検証"""
